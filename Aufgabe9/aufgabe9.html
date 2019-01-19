@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Aufgabe9</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        #inp1
+        {
+            font-size: 1em;
+            font-weight: bold;
+        }
+        #div2
+        {
+            padding-top: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    </style>
+    <body>
+       <h1>Mausereignisse behandeln mit JavaScript</h1>
+           <div id="div1" onclick="changeColor('green')"
+                ondblclick="insertText('DoppelKlick')"
+                onmouseenter="changeSize(true)"
+                onmouseleave="changeSize(false)">
+           </div>
+       <h1>Tastaturereignisse behandeln mit JavaScript</h1>
+       <input id="inp1" onfocus="changeBackground('lightblue')"
+                        onblur="changeBackground('white')"
+                        onkeyup="mirrorInput()"/>
+           <div id="div2">text</div>
+              <script>
+
+                  function mirrorInput()
+                  {
+                      var input= document.getElementById('inp1').value;
+
+                      if(isNaN(input) || input<1 ||input>10000)
+                      {
+                          document.getElementById('inp1').style.color='red';
+                      }
+                      else
+                      {
+                          document.getElementById('inp1').innerHTML=input;
+
+                      }
+                      document.getElementById('div2').innerHTML= input;
+                  }
+
+                  function changeBackground(color)
+                  {
+                      document.getElementById('inp1').style.backgroundColor= color;
+                  }
+                  function changeSize(bigger)
+                  {
+                      if(bigger)
+                      {
+                          document.getElementById('div1').style.width='300px';
+                          document.getElementById('div1').style.height='300px';
+                      }
+                      else
+                      {
+                          document.getElementById('div1').style.width='200px';
+                          document.getElementById('div1').style.height='200px';
+
+                      }
+                  }
+                  function changeColor(color)
+                  {
+                      document.getElementById('div1').style.backgroundcolor=color;
+                  }
+
+                  function insertText(text)
+                  {
+                      var div= document.getElementById('div1');
+                      if(div.innerHTML=='Doppelklick')
+                      {
+                          div.innerHTML='';
+                          div.style.backgroundColor='green';
+                      }
+                      div.style.color= 'white';
+                      div.style.textAlign= 'center';
+                      div.style.fontStyle= 'bold';
+                      div.style.lineHeight= '200px';
+                      div.innerHTML= text;
+                  }
+              </script>
+
+
+    </body>
+</head>
+</html>
